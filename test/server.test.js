@@ -1,13 +1,13 @@
 const tap = require("tap");
 const supertest = require("supertest");
-const app = require("../app");
+const app = require("../src/app");
 const server = supertest(app);
 
 tap.test("POST /tasks", async (t) => {
   const newTask = {
-    title: "New Task",
-    description: "New Task Description",
-    completed: false,
+    title: "Set up environment",
+    description: "Install Node.js, npm, and git",
+    completed: true,
   };
   const response = await server.post("/tasks").send(newTask);
   t.equal(response.status, 201);
